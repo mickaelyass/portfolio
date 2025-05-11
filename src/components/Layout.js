@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 
 function Layout() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-teal-400 to-yellow-200">
+    <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-600 to-purple-600">
       <Header />
       {/* Ajout du padding-top pour compenser la hauteur du header fixe */}
       <main className="flex-grow pt-20 bg-no-repeat bg-contain pb-8">

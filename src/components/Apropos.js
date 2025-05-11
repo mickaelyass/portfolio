@@ -29,12 +29,12 @@ function Apropos() {
         viewport={{ once: true }}
         className="text-center md:text-left max-w-xl"
       >
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">À propos de moi</h2>
-        <p className="text-base md:text-lg leading-relaxed text-gray-700">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4">À propos de moi</h2>
+        <p className="text-base md:text-lg leading-relaxed text-gray-100">
           Développeur backend junior, diplômé en <span className="font-semibold">Systèmes d’Information et Réseaux</span>, 
           je cherche à intégrer une entreprise innovante pour contribuer
           à des projets fullstack. Passionné par les
-          technologies <span className="font-semibold text-blue-600">Node.js</span> et <span className="font-semibold text-blue-600">React</span>, 
+          technologies <span className="font-semiboldtext-gray-100">Node.js</span> et <span className="font-semibold text-gray-100">React</span>, 
           je combine rigueur mathématique et créativité technique.
         </p>
       </motion.div>

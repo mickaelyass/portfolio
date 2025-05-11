@@ -7,7 +7,9 @@ function Header() {
 
   return (
     <header
-      className="fixed top-0 w-full z-50 bg-gradient-to-r from-teal-400 to-yellow-200 text-white p-6 flex justify-between items-center shadow-lg"
+      className="fixed top-0 w-full z-50 bg-gradient-to-r from-blue-800 to-purple-800
+
+ text-white p-6 flex justify-between items-center shadow-lg"
     >
       <div className="flex items-center space-x-8">
         <img src={logo} alt="Logo" className="h-10 w-25 rounded-full" />

@@ -4,6 +4,8 @@ import projet1 from '../assets/ptf1-landscape.png';
 import projet2 from '../assets/pf2-portrait.png';
 import projet4 from '../assets/codec-side.png';
 import projet3 from '../assets/code2-front.png';
+import projet5 from '../assets/image-composite-numerique-ordinateur-portable-divers-symboles_1048944-13026027.jpg';
+
 const projectsData = [
   { id: 1, title: 'GestiPerso', description: 'Développement d’une plateforme de gestion du personnel pour la DDS littoral avec Node.js/React', image:projet1, technologies: ['React', 'Node.js'] },
   { id: 2, title: "Carte d'invitation", description: "Conception de carte d'invitation pour soutenance de Doctorat en Médecine avec figma", image: projet2, technologies: ['Figma'] },
@@ -23,7 +25,7 @@ const projectsData = [
     id: 5,
     title: "Installation et configuration d'OS ",
     description: `Installation de systèmes Windows et distributions Linux sur postes clients et serveurs.`,
-    image: 'url_image_si_tu_as_une_capture_du_poste_ou_du_terminal',
+    image: projet5,
     technologies: ['Windows', 'Linux', 'VirtualBox']
   }
   
@@ -52,7 +54,7 @@ function Projets() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-4xl font-bold text-center text-blue-600 mb-8"
+          className="text-4xl font-bold text-center text-gray-100 mb-8"
         >
           Mes Projets
         </motion.h2>

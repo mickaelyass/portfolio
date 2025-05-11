@@ -49,7 +49,7 @@ function Skills() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-4xl font-bold text-center text-blue-600 mb-12"
+          className="text-4xl font-bold text-center text-gray-100 mb-12"
         >
           Mes Compétences
         </motion.h2>
