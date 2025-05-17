@@ -19,7 +19,7 @@ function Layout() {
           whileInView={{ opacity: 1 }} 
           initial={{ opacity: 0 }} 
           transition={{ duration: 1 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4"
+          className=" scroll-section max-w-screen-lg mx-auto px-4 mb-12"
         >
           <Home />
         </motion.section>
@@ -29,7 +29,7 @@ function Layout() {
           whileInView={{ opacity: 1 }} 
           initial={{ opacity: 0 }} 
           transition={{ duration: 1, delay: 0.2 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4"
+          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
         >
           <Projets />
         </motion.section>
@@ -39,7 +39,7 @@ function Layout() {
           whileInView={{ opacity: 1 }} 
           initial={{ opacity: 0 }} 
           transition={{ duration: 1, delay: 0.2 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4"
+          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
         >
           <Apropos />
         </motion.section>
@@ -49,7 +49,7 @@ function Layout() {
           whileInView={{ opacity: 1 }} 
           initial={{ opacity: 0 }} 
           transition={{ duration: 1, delay: 0.6 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4"
+          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
         >
           <Skills />
         </motion.section>
@@ -59,7 +59,7 @@ function Layout() {
           whileInView={{ opacity: 1 }} 
           initial={{ opacity: 0 }} 
           transition={{ duration: 1, delay: 0.8 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4"
+          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
         >
           <Contact />
         </motion.section>

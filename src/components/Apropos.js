@@ -4,7 +4,7 @@ import profil from '../assets/profil.jpg';
 
 function Apropos() {
   return (
-    <div className="p-6 flex flex-col md:flex-row items-center gap-12 max-w-5xl my-8 mx-auto">
+    <div className="p-6 flex flex-col md:flex-row items-center gap-12 max-w-5xl  bg-gradient-to-r from-blue-700 to-purple-700 bg-opacity-90  mx-auto">
       
       {/* Image animée */}
       <motion.div

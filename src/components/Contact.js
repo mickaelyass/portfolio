@@ -42,8 +42,8 @@ function Contact() {
 
 
   return (
-    <section id="contact" className="py-8">
-      <div className="max-w-screen-lg mx-auto px-4">
+    <section id="contact" className="p-8 bg-gradient-to-r from-blue-700 to-purple-700 bg-opacity-90">
+      <div className="max-w-screen-lg mx-auto px-4 ">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}

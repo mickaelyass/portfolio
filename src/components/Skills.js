@@ -43,8 +43,8 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-16">
-      <div className="max-w-screen-lg mx-auto px-4">
+    <section id="skills" className="p-8 bg-gradient-to-r from-blue-700 to-purple-700 bg-opacity-90">
+      <div className="max-w-screen-lg  mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
