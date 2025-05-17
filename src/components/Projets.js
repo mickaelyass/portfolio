@@ -16,7 +16,6 @@ const projectsData = [
 
 function Projets() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [expandedProjectId, setExpandedProjectId] = useState(null);
 
   const handleSearch = (e) => {
     const term = e.target.value.toLowerCase();
@@ -29,8 +28,13 @@ function Projets() {
     project.technologies.some((tech) => tech.toLowerCase().includes(searchTerm))
   );
 
+  const [expandedProjects, setExpandedProjects] = useState({});
+
   const toggleExpand = (id) => {
-    setExpandedProjectId(expandedProjectId === id ? null : id);
+    setExpandedProjects(prevState => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
   };
 
   return (
@@ -80,16 +84,16 @@ function Projets() {
                   ))}
                 </div>
 
-                {expandedProjectId === project.id && (
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                )}
+                      {expandedProjects[project.id] && (
+                <p className="text-gray-300 mb-4">{project.description}</p>
+              )}
 
-                <button
-                  onClick={() => toggleExpand(project.id)}
-                  className="mt-auto text-sm text-blue-400 hover:text-blue-600 font-medium"
-                >
-                  {expandedProjectId === project.id ? '− Réduire' : '+ Voir plus'}
-                </button>
+              <button
+                onClick={() => toggleExpand(project.id)}
+                className="mt-auto text-sm text-blue-400 hover:text-blue-600 font-medium"
+              >
+                {expandedProjects[project.id] ? '− Réduire' : '+ Voir plus'}
+              </button>
               </div>
             </motion.div>
           ))}
