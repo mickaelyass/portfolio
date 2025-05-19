@@ -67,7 +67,7 @@ function Contact() {
                 <FaPhoneAlt className="text-blue-600" /> (+229) 90 83 14 18
               </li>
               <li className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-blue-600" /> 01 BP 3187 Abomey-Calavi
+                <FaMapMarkerAlt className="text-blue-600" /> 01 BP 3187 Porto-Novo
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-blue-600" /> yassegoungbeseton@gmail.com
