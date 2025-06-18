@@ -1,12 +1,12 @@
 import { Download } from 'lucide-react';
-import profil from '../assets/profil.jpg';
+import profil from '../assets/y.jpg';
 
 function Home() {
   return (
     <section className="w-full flex flex-col items-center justify-center text-center py-10 px-4 min-h-[calc(100vh-64px)] relative">
 
       {/* Conteneur image de profil */}
-      <div className="relative w-36 h-45 rounded-full border-4 border-white shadow-xl overflow-hidden mb-6 hover:scale-105 transition duration-300">
+      <div className="relative w-60 aspect-square rounded-full  shadow-xl overflow-hidden mb-6 hover:scale-105 transition duration-300">
         <img
           src={profil}
           alt="Profil"

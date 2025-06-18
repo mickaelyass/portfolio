@@ -53,15 +53,15 @@ function Contact() {
           Contactez-moi
         </motion.h2>
 
-        <div className="flex flex-col md:flex-row gap-12">
+        <div className="flex flex-col md:flex-row gap-12 h-full">
           {/* Coordonnées */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:w-1/2 bg-white p-4 rounded-lg shadow-lg"
+            className="w-full md:w-1/2 bg-white   p-4 rounded-lg shadow-lg"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Mes coordonnées</h3>
+            <h3 className="text-2xl font-semibold text-gray-900 mb-10">Mes coordonnées</h3>
             <ul className="space-y-4 text-gray-700">
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-blue-600" /> (+229) 90 83 14 18
@@ -86,7 +86,7 @@ function Contact() {
       initial={{ opacity: 0, x: 50, rotate: 5 }}
       whileInView={{ opacity: 1, x: 0, rotate: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full md:w-1/2 bg-white p-4 rounded-lg shadow-lg"
+      className="w-full md:w-1/2 bg-white p-4  rounded-lg shadow-lg"
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <h3 className="text-2xl font-semibold text-gray-900 mb-4">Formulaire de contact</h3>
@@ -134,7 +134,7 @@ function Contact() {
           <label htmlFor="message" className="text-sm text-gray-700 mb-1 block">Message</label>
           <textarea
             id="message"
-            rows="4"
+            rows="2"
             value={formData.message}
             onChange={handleChange}
             placeholder="Votre message"

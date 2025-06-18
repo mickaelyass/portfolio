@@ -66,7 +66,7 @@ function Projets() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: project.id * 0.1 }}
-              className="bg-gray-800 pt-4 rounded-lg shadow-lg overflow-hidden flex flex-col"
+              className="bg-gray-800/60 pt-4 rounded-lg shadow-lg overflow-hidden flex flex-col"
             >
               <img src={project.image} alt={project.title} className="h-48 w-full object-cover rounded-t-lg" />
 

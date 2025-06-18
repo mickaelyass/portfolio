@@ -6,7 +6,7 @@ function Skills() {
       category: "Backend",
       items: [
         "Node.js / Express.js (Intermédiaire)",
-        "Nest.js (Débutant)",
+        "Nest.js (intermédiaire)",
         "Django (Débutant)",
         "API REST",
         "PostgreSQL",
