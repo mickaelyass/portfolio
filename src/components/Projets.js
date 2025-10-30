@@ -4,6 +4,8 @@ import projet1 from '../assets/ptf1-landscape.png';
 import projet2 from '../assets/pf2-portrait.png';
 import projet3 from '../assets/code2-front.png';
 import projet4 from '../assets/codec-side.png';
+import projet6 from '../assets/voix_africaine.png';
+import projet7 from '../assets/clone_upwork.png';
 import projet5 from '../assets/image-composite-numerique-ordinateur-portable-divers-symboles_1048944-13026027.jpg';
 
 const projectsData = [
@@ -12,8 +14,8 @@ const projectsData = [
   { id: 3, title: 'GoPark', description: `Application de gestion de voitures autonomes en C++.`, image: projet3, technologies: ['C++', 'UML'] },
   { id: 4, title: 'Système de gestion d’épicerie', description: `Développement d’une application console en C pour la gestion des stocks et des transactions.`, image: projet4, technologies: ['C', 'Listes chaînées'] },
   { id: 5, title: "Installation et configuration d'OS", description: `Installation de systèmes Windows et distributions Linux sur postes clients et serveurs.`, image: projet5, technologies: ['Windows', 'Linux', 'VirtualBox'] },
-  { id: 6, title: "Voix_africaine", description: `Plateforme web permettant de gerer  des livre ranger par chapitre et qui gère egalement la lecture et l'enregistre de l'audio associé a chaque chapitre si la lecture (audio) est validé.`, image: projet5, technologies: ['Python fast_api', 'react', 'Cloudinary'] },
-  { id: 7, title: "up_travail", description: `Clone de la plateforme upwork.`, image: projet5, technologies: ['Nest.js', 'React', 'Mongodb','Prisma'] },
+  { id: 6, title: "Voix_africaine", description: `Plateforme web permettant de gerer  des livre ranger par chapitre et qui gère egalement la lecture et l'enregistre de l'audio associé a chaque chapitre si la lecture (audio) est validé.`, image: projet6, technologies: ['Python fast_api', 'react', 'Cloudinary'] },
+  { id: 7, title: "up_travail", description: `Clone de la plateforme upwork.`, image: projet7, technologies: ['Nest.js', 'React', 'Mongodb','Prisma'] },
 
 ];
 
