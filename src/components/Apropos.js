@@ -31,7 +31,7 @@ function Apropos() {
       >
         <h2 className="text-2xl md:text-3xl font-bold text-gray-100 mb-4">À propos de moi</h2>
         <p className="text-base md:text-lg leading-relaxed text-gray-100">
-          Développeur backend junior, diplômé en <span className="font-semibold">Systèmes d’Information et Réseaux</span>, 
+          Développeur web, diplômé en <span className="font-semibold">Systèmes d’Information et Réseaux</span>, 
           je cherche à intégrer une entreprise innovante pour contribuer
           à des projets fullstack. Passionné par les
           technologies <span className="font-semiboldtext-gray-100">Node.js</span> et <span className="font-semibold text-gray-100">React</span>, 

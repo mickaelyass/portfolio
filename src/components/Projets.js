@@ -7,11 +7,14 @@ import projet4 from '../assets/codec-side.png';
 import projet5 from '../assets/image-composite-numerique-ordinateur-portable-divers-symboles_1048944-13026027.jpg';
 
 const projectsData = [
-  { id: 1, title: 'GestiPerso', description: 'Développement d’une plateforme de gestion du personnel pour la DDS littoral avec Node.js/React', image: projet1, technologies: ['React', 'Node.js'] },
+  { id: 1, title: 'GestiPerso', description: "Développement d’une plateforme de gestion du personnel pour la DDS littoral avec Node.js/React", image: projet1, technologies: ['React', 'Node.js','Postgresql'] },
   { id: 2, title: "Carte d'invitation", description: "Conception de carte d'invitation pour soutenance de Doctorat en Médecine avec figma", image: projet2, technologies: ['Figma'] },
   { id: 3, title: 'GoPark', description: `Application de gestion de voitures autonomes en C++.`, image: projet3, technologies: ['C++', 'UML'] },
   { id: 4, title: 'Système de gestion d’épicerie', description: `Développement d’une application console en C pour la gestion des stocks et des transactions.`, image: projet4, technologies: ['C', 'Listes chaînées'] },
   { id: 5, title: "Installation et configuration d'OS", description: `Installation de systèmes Windows et distributions Linux sur postes clients et serveurs.`, image: projet5, technologies: ['Windows', 'Linux', 'VirtualBox'] },
+  { id: 6, title: "Voix_africaine", description: `Plateforme web permettant de gerer  des livre ranger par chapitre et qui gère egalement la lecture et l'enregistre de l'audio associé a chaque chapitre si la lecture (audio) est validé.`, image: projet5, technologies: ['Python fast_api', 'react', 'Cloudinary'] },
+  { id: 7, title: "up_travail", description: `Clone de la plateforme upwork.`, image: projet5, technologies: ['Nest.js', 'React', 'Mongodb','Prisma'] },
+
 ];
 
 function Projets() {
@@ -55,7 +58,7 @@ function Projets() {
             placeholder="Rechercher un projet..."
             value={searchTerm}
             onChange={handleSearch}
-            className="px-4 py-2 w-full max-w-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 w-full text-black max-w-md border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
