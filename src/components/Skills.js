@@ -1,84 +1,254 @@
+
 import { motion } from "framer-motion";
+import {
+  Brain,
+  Database,
+  Code2,
+  Monitor,
+  Wrench,
+  Users,
+} from "lucide-react";
 
 function Skills() {
   const skills = [
     {
-      category: "Backend",
+      category: "Data, IA & Biostatistique",
+      icon: Brain,
+      description:
+        "Analyse de données, développement d'outils Data et intégration de technologies d'intelligence artificielle.",
       items: [
-        "Node.js / Express.js (Intermédiaire)",
-        "Nest.js (intermédiaire)",
-        "Django (Débutant)",
+        "R / RStudio",
+        "Shiny",
+        "Python",
+        "FastAPI",
+        "Biostatistique",
+        "Data Wrangling",
+        "Modélisation",
+        "Intégration IA",
+      ],
+    },
+
+    {
+      category: "Backend & Bases de données",
+      icon: Database,
+      description:
+        "Conception d'API, développement backend et gestion de bases de données.",
+      items: [
+        "Node.js",
+        "Express.js",
+        "Nest.js",
+        "Django",
         "API REST",
         "PostgreSQL",
+        "MongoDB",
+        "SQL",
       ],
     },
+
     {
-      category: "Frontend",
+      category: "Frontend & UX/UI",
+      icon: Code2,
+      description:
+        "Création d'interfaces web modernes, responsives et orientées utilisateur.",
       items: [
-        "HTML, CSS (Bootstrap)",
-        "React (Intermédiaire)",
-        "Vue.js (Débutant)",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "React",
+        "Figma",
       ],
     },
+
     {
-      category: "Outils",
-      items: ["Git", "Docker (Notion)", "Figma"],
-    },
-    {
-      category: "Systèmes",
+      category: "Outils & Systèmes",
+      icon: Wrench,
+      description:
+        "Environnements, outils de développement et gestion des projets logiciels.",
       items: [
-        "Maîtrise de Linux",
-        "Installation Windows et Linux",
+        "Git",
+        "GitHub",
+        "Docker",
+        "Linux / Ubuntu",
+        "Windows",
       ],
     },
+
     {
-      category: "Soft Skills",
+      category: "Modélisation & Méthodes",
+      icon: Monitor,
+      description:
+        "Analyse, conception et structuration de solutions informatiques.",
       items: [
         "Modélisation UML",
-        "Adaptabilité",
+        "Architecture logicielle",
+        "API REST",
+        "Data Wrangling",
         "Résolution de problèmes",
-        "Apprentissage rapide",
+      ],
+    },
+
+    {
+      category: "Soft Skills",
+      icon: Users,
+      description:
+        "Compétences transversales mobilisées dans les projets et le travail en équipe.",
+      items: [
+        "Rigueur analytique",
+        "Résolution de problèmes",
+        "Pédagogie",
+        "Travail en équipe Agile",
+        "Adaptabilité",
       ],
     },
   ];
 
   return (
-    <section id="skills" className="p-8 bg-gradient-to-r from-blue-700 to-purple-700 bg-opacity-90">
-      <div className="max-w-screen-lg  mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-4xl font-bold text-center text-gray-100 mb-12"
-        >
-          Mes Compétences
-        </motion.h2>
+    <section id="skills" className="w-full">
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {skills.map((skillCategory, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white rounded-lg p-6 shadow-lg"
-            >
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4 border-b pb-2">
-                {skillCategory.category}
-              </h3>
-              <ul className="list-disc list-inside space-y-2">
-                {skillCategory.items.map((item, idx) => (
-                  <li key={idx} className="text-gray-700">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+      <div className="max-w-6xl mx-auto">
+
+        {/* =========================
+            EN-TÊTE
+        ========================== */}
+        <div className="text-center mb-12">
+
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">
+            Expertise
+          </p>
+
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Mes compétences
+          </h2>
+
+          <p className="max-w-2xl mx-auto text-slate-600 leading-relaxed">
+            Un ensemble de compétences techniques et méthodologiques couvrant
+            le développement logiciel, la Data, l'intelligence artificielle
+            et les systèmes d'information.
+          </p>
+
         </div>
+
+
+        {/* =========================
+            CARTES
+        ========================== */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          {skills.map((skillCategory, index) => {
+
+            const Icon = skillCategory.icon;
+
+            return (
+              <motion.div
+                key={skillCategory.category}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                }}
+                className="
+                  group
+                  bg-white
+                  border
+                  border-slate-200
+                  rounded-2xl
+                  p-6
+                  shadow-sm
+                  hover:shadow-lg
+                  hover:-translate-y-1
+                  transition-all
+                  duration-300
+                "
+              >
+
+                {/* Icône + titre */}
+                <div className="flex items-start gap-4 mb-5">
+
+                  <div className="
+                    flex
+                    items-center
+                    justify-center
+                    w-11
+                    h-11
+                    rounded-xl
+                    bg-blue-50
+                    text-blue-600
+                    flex-shrink-0
+                    group-hover:bg-blue-600
+                    group-hover:text-white
+                    transition-colors
+                    duration-300
+                  ">
+                    <Icon size={22} />
+                  </div>
+
+                  <div>
+
+                    <h3 className="
+                      text-lg
+                      font-bold
+                      text-slate-900
+                      leading-tight
+                    ">
+                      {skillCategory.category}
+                    </h3>
+
+                  </div>
+
+                </div>
+
+
+                {/* Description */}
+                <p className="
+                  text-sm
+                  text-slate-500
+                  leading-relaxed
+                  mb-5
+                ">
+                  {skillCategory.description}
+                </p>
+
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2">
+
+                  {skillCategory.items.map((item) => (
+
+                    <span
+                      key={item}
+                      className="
+                        px-3
+                        py-1.5
+                        rounded-lg
+                        bg-slate-100
+                        text-slate-600
+                        text-xs
+                        font-medium
+                        hover:bg-blue-50
+                        hover:text-blue-700
+                        transition-colors
+                      "
+                    >
+                      {item}
+                    </span>
+
+                  ))}
+
+                </div>
+
+              </motion.div>
+            );
+          })}
+
+        </div>
+
       </div>
+
     </section>
   );
 }
 
 export default Skills;
+

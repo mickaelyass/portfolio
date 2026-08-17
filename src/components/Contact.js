@@ -1,176 +1,741 @@
-import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaGithub, FaGlobe, FaCheckCircle } from 'react-icons/fa';
+
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaGithub,
+  FaGlobe,
+  FaCheckCircle,
+} from "react-icons/fa";
+import { Loader2 } from "lucide-react";
 
 function Contact() {
   const [showToast, setShowToast] = useState(false);
+  const [sending, setSending] = useState(false);
+
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+
+    // Supprimer l'erreur dès que l'utilisateur modifie le formulaire
+    if (errorMessage) {
+      setErrorMessage("");
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowToast(true);
 
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
+    setSending(true);
+    setErrorMessage("");
 
-    const serviceID = 'service_n0oqptp';
-    const templateID = 'template_v7xeqjb';
-    const publicKey = 'YJlnFWRToFxc0san9';
+    const serviceID = "service_n0oqptp";
+    const templateID = "template_v7xeqjb";
+    const publicKey = "YJlnFWRToFxc0san9";
 
-    emailjs.send(serviceID, templateID, formData, publicKey)
-      .then((response) => {
-        console.log('Message envoyé !', response);
-        setFormData({ name: '', email: '', subject: '', message: '' });
-      })
-      .catch((error) => {
-        console.error('Erreur lors de l\'envoi :', error);
-        alert('Erreur lors de l\'envoi du message !');
+    try {
+      await emailjs.send(
+        serviceID,
+        templateID,
+        formData,
+        publicKey
+      );
+
+      // Message envoyé avec succès
+      setShowToast(true);
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
       });
+
+      setTimeout(() => {
+        setShowToast(false);
+      }, 4000);
+
+    } catch (error) {
+      console.error("Erreur lors de l'envoi :", error);
+
+      setErrorMessage(
+        "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer."
+      );
+
+    } finally {
+      setSending(false);
+    }
   };
-
-
 
   return (
-    <section id="contact" className="p-8 bg-gradient-to-r from-blue-700 to-purple-700 bg-opacity-90">
-      <div className="max-w-screen-lg mx-auto px-4 ">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-4xl font-bold text-center text-gray-100 mb-12"
-        >
-          Contactez-moi
-        </motion.h2>
+    <section id="contact" className="w-full">
 
-        <div className="flex flex-col md:flex-row gap-12 h-full">
-          {/* Coordonnées */}
+      <div className="max-w-6xl mx-auto">
+
+        {/* =========================
+            EN-TÊTE
+        ========================== */}
+        <div className="text-center mb-12">
+
+          <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 mb-2">
+            Contact
+          </p>
+
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Travaillons ensemble
+          </h2>
+
+          <p className="max-w-2xl mx-auto text-slate-600 leading-relaxed">
+            Vous avez un projet, une idée ou une opportunité à discuter ?
+            N'hésitez pas à me contacter.
+          </p>
+
+        </div>
+
+
+        {/* =========================
+            CONTENU
+        ========================== */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+          {/* =========================
+              COORDONNÉES
+          ========================== */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full md:w-1/2 bg-white   p-4 rounded-lg shadow-lg"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="
+              bg-white
+              border
+              border-slate-200
+              rounded-2xl
+              p-6
+              sm:p-8
+              shadow-sm
+            "
           >
-            <h3 className="text-2xl font-semibold text-gray-900 mb-10">Mes coordonnées</h3>
-            <ul className="space-y-4 text-gray-700">
-              <li className="flex items-center gap-3">
-                <FaPhoneAlt className="text-blue-600" /> (+229) 90 83 14 18
-              </li>
-              <li className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-blue-600" /> 01 BP 3187 Porto-Novo
-              </li>
-              <li className="flex items-center gap-3">
-                <FaEnvelope className="text-blue-600" /> yassegoungbeseton@gmail.com
-              </li>
-              <li className="flex items-center gap-3">
-                <FaGithub className="text-blue-600" /> <a href="https://github.com/mickaelyass" target="_blank" rel="noreferrer" className="hover:underline">github.com/mickaelyass</a>
-              </li>
-              <li className="flex items-center gap-3">
-                <FaGlobe className="text-blue-600" /> <a href="https://mickaels-projects-c86ff2e4.vercel.app" target="_blank" rel="noreferrer" className="hover:underline">Portfolio</a>
-              </li>
-            </ul>
+
+            <h3 className="
+              text-xl
+              font-bold
+              text-slate-900
+              mb-2
+            ">
+              Mes coordonnées
+            </h3>
+
+            <p className="
+              text-sm
+              text-slate-500
+              mb-8
+            ">
+              Retrouvez-moi directement via les différents moyens de contact
+              ci-dessous.
+            </p>
+
+
+            <div className="space-y-5">
+
+              {/* Téléphone */}
+              <a
+                href="tel:+229190831418"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  group
+                "
+              >
+
+                <div className="
+                  w-11
+                  h-11
+                  rounded-xl
+                  bg-blue-50
+                  text-blue-600
+                  flex
+                  items-center
+                  justify-center
+                  group-hover:bg-blue-600
+                  group-hover:text-white
+                  transition
+                ">
+                  <FaPhoneAlt />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 mb-1">
+                    Téléphone
+                  </p>
+
+                  <p className="
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    group-hover:text-blue-600
+                    transition
+                  ">
+                    +229 19 08 31 41 8
+                  </p>
+                </div>
+
+              </a>
+
+
+              {/* Email */}
+              <a
+                href="mailto:yassegoungbeseton@gmail.com"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  group
+                "
+              >
+
+                <div className="
+                  w-11
+                  h-11
+                  rounded-xl
+                  bg-blue-50
+                  text-blue-600
+                  flex
+                  items-center
+                  justify-center
+                  group-hover:bg-blue-600
+                  group-hover:text-white
+                  transition
+                ">
+                  <FaEnvelope />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 mb-1">
+                    Email
+                  </p>
+
+                  <p className="
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    break-all
+                    group-hover:text-blue-600
+                    transition
+                  ">
+                    yassegoungbeseton@gmail.com
+                  </p>
+                </div>
+
+              </a>
+
+
+              {/* Localisation */}
+              <div className="
+                flex
+                items-center
+                gap-4
+              ">
+
+                <div className="
+                  w-11
+                  h-11
+                  rounded-xl
+                  bg-blue-50
+                  text-blue-600
+                  flex
+                  items-center
+                  justify-center
+                ">
+                  <FaMapMarkerAlt />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 mb-1">
+                    Localisation
+                  </p>
+
+                  <p className="
+                    text-sm
+                    font-medium
+                    text-slate-700
+                  ">
+                    Cotonou, Bénin
+                  </p>
+                </div>
+
+              </div>
+
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/mickaelyass"
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  group
+                "
+              >
+
+                <div className="
+                  w-11
+                  h-11
+                  rounded-xl
+                  bg-blue-50
+                  text-blue-600
+                  flex
+                  items-center
+                  justify-center
+                  group-hover:bg-blue-600
+                  group-hover:text-white
+                  transition
+                ">
+                  <FaGithub />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 mb-1">
+                    GitHub
+                  </p>
+
+                  <p className="
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    group-hover:text-blue-600
+                    transition
+                  ">
+                    github.com/mickaelyass
+                  </p>
+                </div>
+
+              </a>
+
+
+              {/* Portfolio */}
+              <a
+                href="https://mickaels-projects-c86ff2e4.vercel.app"
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  group
+                "
+              >
+
+                <div className="
+                  w-11
+                  h-11
+                  rounded-xl
+                  bg-blue-50
+                  text-blue-600
+                  flex
+                  items-center
+                  justify-center
+                  group-hover:bg-blue-600
+                  group-hover:text-white
+                  transition
+                ">
+                  <FaGlobe />
+                </div>
+
+                <div>
+                  <p className="text-xs text-slate-400 mb-1">
+                    Portfolio
+                  </p>
+
+                  <p className="
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    group-hover:text-blue-600
+                    transition
+                  ">
+                    Voir mon portfolio
+                  </p>
+                </div>
+
+              </a>
+
+            </div>
+
           </motion.div>
 
-          {/* Formulaire */}
+
+          {/* =========================
+              FORMULAIRE
+          ========================== */}
           <motion.div
-      initial={{ opacity: 0, x: 50, rotate: 5 }}
-      whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-      transition={{ duration: 0.8 }}
-      className="w-full md:w-1/2 bg-white p-4  rounded-lg shadow-lg"
-    >
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <h3 className="text-2xl font-semibold text-gray-900 mb-4">Formulaire de contact</h3>
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="
+              bg-white
+              border
+              border-slate-200
+              rounded-2xl
+              p-6
+              sm:p-8
+              shadow-sm
+            "
+          >
 
-        <div>
-          <label htmlFor="name" className="text-sm text-gray-700 mb-1 block">Nom complet</label>
-          <input
-            type="text"
-            id="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Votre nom"
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+            <h3 className="
+              text-xl
+              font-bold
+              text-slate-900
+              mb-2
+            ">
+              Envoyer un message
+            </h3>
 
-        <div>
-          <label htmlFor="email" className="text-sm text-gray-700 mb-1 block">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Votre email"
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+            <p className="
+              text-sm
+              text-slate-500
+              mb-6
+            ">
+              Remplissez le formulaire et je vous répondrai dans les meilleurs
+              délais.
+            </p>
 
-        <div>
-          <label htmlFor="subject" className="text-sm text-gray-700 mb-1 block">Sujet</label>
-          <input
-            type="text"
-            id="subject"
-            value={formData.subject}
-            onChange={handleChange}
-            placeholder="Sujet"
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
 
-        <div>
-          <label htmlFor="message" className="text-sm text-gray-700 mb-1 block">Message</label>
-          <textarea
-            id="message"
-            rows="2"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Votre message"
-            required
-            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-lg font-medium transition duration-300"
-        >
-          Envoyer
-        </button>
-      </form>
-    </motion.div>
-        </div>
-
-        {/* Toast notification */}
-        <AnimatePresence>
-          {showToast && (
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.4 }}
-              className="fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg flex items-center gap-3 shadow-lg z-50"
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5"
             >
-              <FaCheckCircle className="text-white text-xl" />
-              <span>Message envoyé avec succès !</span>
+
+              {/* Nom */}
+              <div>
+
+                <label
+                  htmlFor="name"
+                  className="
+                    block
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    mb-2
+                  "
+                >
+                  Nom complet
+                </label>
+
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Votre nom"
+                  required
+                  className="
+                    w-full
+                    px-4
+                    py-3
+                    bg-slate-50
+                    border
+                    border-slate-200
+                    rounded-lg
+                    text-slate-700
+                    placeholder:text-slate-400
+                    outline-none
+                    focus:bg-white
+                    focus:border-blue-500
+                    focus:ring-2
+                    focus:ring-blue-100
+                    transition
+                  "
+                />
+
+              </div>
+
+
+              {/* Email */}
+              <div>
+
+                <label
+                  htmlFor="email"
+                  className="
+                    block
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    mb-2
+                  "
+                >
+                  Email
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="votre@email.com"
+                  required
+                  className="
+                    w-full
+                    px-4
+                    py-3
+                    bg-slate-50
+                    border
+                    border-slate-200
+                    rounded-lg
+                    text-slate-700
+                    placeholder:text-slate-400
+                    outline-none
+                    focus:bg-white
+                    focus:border-blue-500
+                    focus:ring-2
+                    focus:ring-blue-100
+                    transition
+                  "
+                />
+
+              </div>
+
+
+              {/* Sujet */}
+              <div>
+
+                <label
+                  htmlFor="subject"
+                  className="
+                    block
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    mb-2
+                  "
+                >
+                  Sujet
+                </label>
+
+                <input
+                  type="text"
+                  id="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Objet de votre message"
+                  required
+                  className="
+                    w-full
+                    px-4
+                    py-3
+                    bg-slate-50
+                    border
+                    border-slate-200
+                    rounded-lg
+                    text-slate-700
+                    placeholder:text-slate-400
+                    outline-none
+                    focus:bg-white
+                    focus:border-blue-500
+                    focus:ring-2
+                    focus:ring-blue-100
+                    transition
+                  "
+                />
+
+              </div>
+
+
+              {/* Message */}
+              <div>
+
+                <label
+                  htmlFor="message"
+                  className="
+                    block
+                    text-sm
+                    font-medium
+                    text-slate-700
+                    mb-2
+                  "
+                >
+                  Message
+                </label>
+
+                <textarea
+                  id="message"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Votre message..."
+                  required
+                  className="
+                    w-full
+                    px-4
+                    py-3
+                    bg-slate-50
+                    border
+                    border-slate-200
+                    rounded-lg
+                    text-slate-700
+                    placeholder:text-slate-400
+                    outline-none
+                    resize-none
+                    focus:bg-white
+                    focus:border-blue-500
+                    focus:ring-2
+                    focus:ring-blue-100
+                    transition
+                  "
+                />
+
+              </div>
+
+
+              {/* Erreur */}
+              {errorMessage && (
+                <div className="
+                  px-4
+                  py-3
+                  rounded-lg
+                  bg-red-50
+                  border
+                  border-red-100
+                  text-sm
+                  text-red-600
+                ">
+                  {errorMessage}
+                </div>
+              )}
+
+
+              {/* Bouton */}
+              <button
+                type="submit"
+                disabled={sending}
+                className="
+                  w-full
+                  flex
+                  items-center
+                  justify-center
+                  gap-2
+                  px-6
+                  py-3
+                  rounded-lg
+                  bg-blue-600
+                  text-white
+                  font-semibold
+                  hover:bg-blue-700
+                  disabled:bg-blue-400
+                  disabled:cursor-not-allowed
+                  transition
+                  duration-200
+                "
+              >
+
+                {sending ? (
+                  <>
+                    <Loader2
+                      size={19}
+                      className="animate-spin"
+                    />
+                    Envoi en cours...
+                  </>
+                ) : (
+                  "Envoyer le message"
+                )}
+
+              </button>
+
+            </form>
+
+          </motion.div>
+
+        </div>
+
+
+        {/* =========================
+            TOAST SUCCÈS
+        ========================== */}
+        <AnimatePresence>
+
+          {showToast && (
+
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 30,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+              className="
+                fixed
+                bottom-6
+                right-6
+                bg-white
+                border
+                border-green-200
+                text-slate-700
+                px-5
+                py-4
+                rounded-xl
+                flex
+                items-center
+                gap-3
+                shadow-xl
+                z-50
+              "
+            >
+
+              <FaCheckCircle className="text-green-500 text-xl" />
+
+              <div>
+
+                <p className="font-semibold text-slate-900">
+                  Message envoyé
+                </p>
+
+                <p className="text-sm text-slate-500">
+                  Merci pour votre message.
+                </p>
+
+              </div>
+
             </motion.div>
+
           )}
+
         </AnimatePresence>
+
       </div>
+
     </section>
   );
 }
 
 export default Contact;
+

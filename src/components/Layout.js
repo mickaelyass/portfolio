@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -10,63 +11,93 @@ import { motion } from 'framer-motion';
 
 function Layout() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-r from-blue-600 to-purple-600">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
+
       <Header />
-      {/* Ajout du padding-top pour compenser la hauteur du header fixe */}
-      <main className="flex-grow pt-20 bg-no-repeat bg-contain pb-8">
-        <motion.section 
+
+      <main className="flex-grow pt-20">
+
+        {/* =========================
+            ACCUEIL
+        ========================== */}
+        <motion.section
           id="home"
-          whileInView={{ opacity: 1 }} 
-          initial={{ opacity: 0 }} 
-          transition={{ duration: 1 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4 mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="scroll-section max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         >
           <Home />
         </motion.section>
 
-        <motion.section 
+
+        {/* =========================
+            PROJETS
+        ========================== */}
+        <motion.section
           id="projets"
-          whileInView={{ opacity: 1 }} 
-          initial={{ opacity: 0 }} 
-          transition={{ duration: 1, delay: 0.2 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="scroll-section max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         >
           <Projets />
         </motion.section>
 
-        <motion.section 
+
+        {/* =========================
+            À PROPOS
+        ========================== */}
+        <motion.section
           id="apropos"
-          whileInView={{ opacity: 1 }} 
-          initial={{ opacity: 0 }} 
-          transition={{ duration: 1, delay: 0.2 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="scroll-section max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         >
           <Apropos />
         </motion.section>
 
-        <motion.section 
+
+        {/* =========================
+            COMPÉTENCES
+        ========================== */}
+        <motion.section
           id="skills"
-          whileInView={{ opacity: 1 }} 
-          initial={{ opacity: 0 }} 
-          transition={{ duration: 1, delay: 0.6 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="scroll-section max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         >
           <Skills />
         </motion.section>
 
-        <motion.section 
+
+        {/* =========================
+            CONTACT
+        ========================== */}
+        <motion.section
           id="contact"
-          whileInView={{ opacity: 1 }} 
-          initial={{ opacity: 0 }} 
-          transition={{ duration: 1, delay: 0.8 }}
-          className=" scroll-section max-w-screen-lg mx-auto px-4 my-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="scroll-section max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8"
         >
           <Contact />
         </motion.section>
+
       </main>
+
       <Footer />
+
     </div>
   );
 }
 
 export default Layout;
+
