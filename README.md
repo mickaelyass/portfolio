@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# Portfolio personnel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Site vitrine **React** présentant mon profil, mes compétences, mes projets et un
+formulaire de contact. Interface responsive avec animations au défilement et CV
+téléchargeable.
 
-## Available Scripts
+> **Stack** : React 19 · Create React App · Tailwind CSS · Framer Motion ·
+> react-icons + lucide-react · EmailJS · Docker (build Node → service Nginx).
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 1. Fonctionnalités
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Accueil** — présentation rapide et accroche.
+- **Projets** — vitrine des réalisations (aperçus et liens).
+- **À propos** — parcours et présentation.
+- **Compétences** — technologies et savoir-faire.
+- **Contact** — formulaire d'envoi d'e-mail via **EmailJS**.
+- Navigation par ancres avec **animations Framer Motion** au scroll.
+- CV téléchargeable (`public/cv.pdf`).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 2. Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```text
+portfolio/
+├── Dockerfile                # npm run build (node) puis copie de build/ dans Nginx
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+├── public/
+│   ├── cv.pdf                # CV téléchargeable
+│   ├── index.html
+│   └── manifest.json · favicon.ico · logos
+└── src/
+    ├── App.js                # rend <Layout/>
+    ├── components/
+    │   ├── Layout.js         # assemble les sections en une page (scroll)
+    │   ├── Header.js         # barre de navigation fixe
+    │   ├── Home.js           # section « Accueil »
+    │   ├── Projets.js        # section « Projets »
+    │   ├── Apropos.js        # section « À propos »
+    │   ├── Skills.js         # section « Compétences »
+    │   ├── Contact.js        # formulaire EmailJS
+    │   ├── Footer.js         # liens sociaux, mentions
+    │   └── Dockerfile
+    └── assets/               # images et aperçus de projets
+```
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 3. Prérequis
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Node.js** ≥ 18 et npm
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 4. Installation & exécution
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+npm start          # http://localhost:3000
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build de production
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run build      # génère le dossier build/ optimisé
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 5. Déploiement Docker
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Le `Dockerfile` construit l'application puis la sert via **Nginx** :
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+docker build -t portfolio .
+docker run -d -p 80:80 portfolio
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 6. Dépendances principales
 
-### Analyzing the Bundle Size
+| Paquet | Usage |
+|---|---|
+| `react`, `react-dom` | Interface utilisateur (React 19) |
+| `framer-motion` | Animations au défilement |
+| `react-icons`, `lucide-react` | Icônes |
+| `emailjs-com` | Envoi du formulaire de contact sans backend |
+| `tailwindcss`, `postcss`, `autoprefixer` | Styles utilitaires |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 7. Points d'attention
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Les identifiants **EmailJS** (service, template, clé publique) sont à
+  configurer côté client dans `Contact.js` avant le déploiement.
+- Pensez à remplacer `public/cv.pdf` par votre CV à jour.
